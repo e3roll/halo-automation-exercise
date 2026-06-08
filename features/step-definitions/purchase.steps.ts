@@ -39,7 +39,6 @@ When('I place the order with comment {string}', async (comment: string) => {
 });
 
 When('I confirm payment with card details', async () => {
-  browser.debug();
   await paymentPage.fillAndSubmit({
     name: 'Invoice Buyer',
     cardNumber: '4111111111111111',

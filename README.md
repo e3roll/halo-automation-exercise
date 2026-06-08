@@ -52,38 +52,8 @@ npx wdio run wdio.conf.ts --spec features/purchase.feature
 Run scenarios matching a tag:
 
 ```bash
-npx wdio run wdio.conf.ts --cucumberOpts.tagExpression="@smoke"
-npx wdio run wdio.conf.ts --cucumberOpts.tagExpression="@e2e"
-```
-
-## Project Structure
-
-```
-halo-application/
-├── features/
-│   ├── login.feature           # TC02, TC03: login scenarios
-│   ├── logout.feature          # TC04: logout scenario
-│   ├── purchase.feature        # TC24: purchase and invoice download
-│   ├── register.feature        # TC01, TC05: registration scenarios
-│   └── step-definitions/
-│       ├── common.steps.ts     # Shared steps: home page, signup, account deletion
-│       ├── login.steps.ts      # Login-specific steps
-│       ├── logout.steps.ts     # Logout-specific steps
-│       └── purchase.steps.ts   # Cart, purchase and checkout steps
-├── pages/
-│   ├── BasePage.ts             # open(), waitForPageLoad(), getTitle()
-│   ├── AccountPage.ts          # User name, logout, delete account
-│   ├── CartPage.ts             # Proceed to checkout, checkout modal
-│   ├── CheckoutPage.ts         # Address review, comment, place order
-│   ├── HomePage.ts             # Logo check, navigation menu
-│   ├── LoginPage.ts            # Login form, signup form, error messages
-│   ├── PaymentPage.ts          # Payment form, order confirmation, download invoice
-│   ├── ProductPage.ts          # Product detail page, add to cart
-│   └── SignupPage.ts           # Account info form, address form
-├── allure-results/             # Raw Allure XML output (generated at runtime)
-├── allure-report/              # HTML report
-├── wdio.conf.ts                # WebDriverIO configuration
-└── tsconfig.json               # TypeScript configuration
+npx wdio run wdio.conf.ts --cucumberOpts.tags="@smoke"
+WDIO_HEADLESS=true npx wdio run wdio.conf.ts --cucumberOpts.tags="@e2e"
 ```
 
 ## Test Cases Covered

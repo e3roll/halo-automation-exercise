@@ -69,7 +69,7 @@ export const config: Options.Testrunner = {
     snippets: true,
     source: true,
     strict: false,
-    tagExpression: '',
+    tags: '',
     timeout: 60000,
     ignoreUndefinedDefinitions: false,
   },
