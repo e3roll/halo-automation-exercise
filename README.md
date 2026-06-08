@@ -1,6 +1,6 @@
 # Halo Automation Exercise
 
-Test cases built with WebDriverIO v9, Cucumber (BDD), and TypeScript for site [automationexercise.com](https://www.automationexercise.com), .
+Test cases built with WebDriverIO v9, Cucumber (BDD), and TypeScript for site [automationexercise.com](https://www.automationexercise.com).
 
 ## Features
 
