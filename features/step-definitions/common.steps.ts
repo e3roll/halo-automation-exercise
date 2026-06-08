@@ -14,17 +14,17 @@ When('I click on Signup Login', async () => {
   await homePage.clickSignupLogin();
 });
 
-Then('I should see the {string} heading', async (heading: string) => {
-  const upper = heading.toUpperCase();
+Then('I should see the {string} title', async (title: string) => {
+  const upper = title.toUpperCase();
 
   if (upper.includes('NEW USER SIGNUP')) {
-    await loginPage.signupHeading.waitForDisplayed({ timeout: 10000 });
+    await loginPage.signupTitle.waitForDisplayed({ timeout: 10000 });
   } else if (upper.includes('LOGIN TO YOUR ACCOUNT')) {
-    await loginPage.loginHeading.waitForDisplayed({ timeout: 10000 });
+    await loginPage.loginTitle.waitForDisplayed({ timeout: 10000 });
   } else if (upper.includes('ENTER ACCOUNT INFORMATION')) {
-    await signupPage.accountInfoHeading.waitForDisplayed({ timeout: 10000 });
+    await signupPage.accountInfoTitle.waitForDisplayed({ timeout: 10000 });
   } else if (upper.includes('ACCOUNT CREATED')) {
-    await signupPage.accountCreatedHeading.waitForDisplayed({ timeout: 10000 });
+    await signupPage.accountCreatedTitle.waitForDisplayed({ timeout: 10000 });
   } else if (upper.includes('ACCOUNT DELETED')) {
     await $('h2[data-qa="account-deleted"] b').waitForDisplayed({ timeout: 10000 });
   }

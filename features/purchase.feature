@@ -11,11 +11,11 @@ Feature: Purchase and Invoice Download
     When I proceed to checkout
     And I click Register Login on the checkout prompt
     And I enter name "Invoice Buyer" and email "invoicebuyer@testmail.com"
-    Then I should see the "ENTER ACCOUNT INFORMATION" heading
+    Then I should see the "ENTER ACCOUNT INFORMATION" title
     And I fill in account information with password "Test@1234" and date of birth "1" "January" "1990"
     And I fill in address information
     And I click Create Account
-    Then I should see the "ACCOUNT CREATED!" heading
+    Then I should see the "ACCOUNT CREATED!" title
     When I click Continue
     Then I should be logged in as "John Doe"
     When I view the cart
@@ -27,4 +27,4 @@ Feature: Purchase and Invoice Download
     When I download the invoice
     And I click Continue
     And I delete the account
-    Then I should see the "ACCOUNT DELETED!" heading
+    Then I should see the "ACCOUNT DELETED!" title

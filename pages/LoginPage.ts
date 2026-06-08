@@ -6,7 +6,7 @@ class LoginPage extends BasePage {
   }
 
   // Login section
-  get loginHeading() {
+  get loginTitle() {
     return $('div.login-form h2');
   }
 
@@ -27,7 +27,7 @@ class LoginPage extends BasePage {
   }
 
   // Signup section
-  get signupHeading() {
+  get signupTitle() {
     return $('div.signup-form h2');
   }
 
@@ -70,11 +70,11 @@ class LoginPage extends BasePage {
   }
 
   async isLoginSectionVisible(): Promise<boolean> {
-    return this.loginHeading.isDisplayed();
+    return this.loginTitle.isDisplayed();
   }
 
   async isSignupSectionVisible(): Promise<boolean> {
-    return this.signupHeading.isDisplayed();
+    return this.signupTitle.isDisplayed();
   }
 }
 

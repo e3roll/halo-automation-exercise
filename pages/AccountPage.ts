@@ -34,9 +34,9 @@ class AccountPage extends BasePage {
   }
 
   async isAccountDeleted(): Promise<boolean> {
-    const heading = await $('h2[data-qa="account-deleted"] b');
-    await heading.waitForDisplayed({ timeout: 10000 });
-    return (await heading.getText()).toUpperCase().includes('ACCOUNT DELETED');
+    const title = await $('h2[data-qa="account-deleted"] b');
+    await title.waitForDisplayed({ timeout: 10000 });
+    return (await title.getText()).toUpperCase().includes('ACCOUNT DELETED');
   }
 
   async clickContinueAfterDelete(): Promise<void> {

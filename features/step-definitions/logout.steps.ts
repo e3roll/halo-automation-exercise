@@ -7,5 +7,5 @@ When('I click Logout', async () => {
 });
 
 Then('I should be on the login page', async () => {
-  await loginPage.loginHeading.waitForDisplayed({ timeout: 10000 });
+  await loginPage.loginTitle.waitForDisplayed({ timeout: 10000 });
 });

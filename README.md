@@ -6,13 +6,14 @@ Test cases built with WebDriverIO v9, Cucumber (BDD), and TypeScript for site [a
 
 - BDD-style scenarios written in Gherkin (`.feature` files)
 - POM design pattern
-- Allure reporting with screenshots on failure
-- Headless execution (optional)
+- Allure reporter
+- Headless execution
 
 ## Requirements
 
 - Node.js 18+
-- Firefox / Chrome browser 
+- Firefox
+- Chrome (not tested)
 
 ## Usage
 
@@ -28,25 +29,16 @@ or
 npx wdio run wdio.conf.ts
 ```
 
-Run headless (no browser window):
+Run headless:
 
 ```bash
 npm run test:headless
-```
-
-Generate and open the Allure HTML report after a test run:
-
-```bash
-npm run test:report
 ```
 
 Run a single feature file:
 
 ```bash
 npx wdio run wdio.conf.ts --spec features/login.feature
-npx wdio run wdio.conf.ts --spec features/logout.feature
-npx wdio run wdio.conf.ts --spec features/register.feature
-npx wdio run wdio.conf.ts --spec features/purchase.feature
 ```
 
 Run scenarios matching a tag:
@@ -56,7 +48,7 @@ npx wdio run wdio.conf.ts --cucumberOpts.tags="@smoke"
 WDIO_HEADLESS=true npx wdio run wdio.conf.ts --cucumberOpts.tags="@e2e"
 ```
 
-## Test Cases Covered
+## Test Cases
 
 | ID    | Scenario                                          |
 |-------|---------------------------------------------------|

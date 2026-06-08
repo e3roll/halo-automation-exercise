@@ -1,7 +1,7 @@
 {
   "name": "halo-automation-exercise",
   "version": "1.0.0",
-  "description": "WebDriverIO + Cucumber + TypeScript test suite for automationexercise.com",
+  "description": "WebDriverIO + Cucumber + TypeScript example tests for automationexercise.com",
   "main": "index.js",
   "scripts": {
     "test": "wdio run wdio.conf.ts",

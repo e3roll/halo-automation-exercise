@@ -30,6 +30,7 @@ export const config: Options.Testrunner = {
     //       '--no-sandbox',
     //       '--disable-extensions',
     //       '--disable-infobars',
+    //       ...(process.env.WDIO_HEADLESS === 'true' ? ['--headless=new'] : []),
     //     ]
     //   }
     // },
@@ -40,7 +41,6 @@ export const config: Options.Testrunner = {
         log: { level: 'error' },
         args: [
           ...(process.env.WDIO_HEADLESS === 'true' ? ['--headless'] : []),
-          // '--headless',  // uncomment to always run headless
         ],
         prefs: {
           'dom.webnotifications.enabled': false,

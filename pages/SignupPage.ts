@@ -5,7 +5,7 @@ class SignupPage extends BasePage {
     return '/signup';
   }
 
-  get accountInfoHeading() {
+  get accountInfoTitle() {
     return $('h2.title.text-center b');
   }
 
@@ -89,7 +89,7 @@ class SignupPage extends BasePage {
     return $('button[data-qa="create-account"]');
   }
 
-  get accountCreatedHeading() {
+  get accountCreatedTitle() {
     return $('h2[data-qa="account-created"] b');
   }
 
@@ -98,8 +98,8 @@ class SignupPage extends BasePage {
   }
 
   async isAccountInfoPageDisplayed(): Promise<boolean> {
-    await this.accountInfoHeading.waitForDisplayed({ timeout: 10000 });
-    const text = await this.accountInfoHeading.getText();
+    await this.accountInfoTitle.waitForDisplayed({ timeout: 10000 });
+    const text = await this.accountInfoTitle.getText();
     return text.toUpperCase().includes('ENTER ACCOUNT INFORMATION');
   }
 
@@ -147,8 +147,8 @@ class SignupPage extends BasePage {
   }
 
   async isAccountCreated(): Promise<boolean> {
-    await this.accountCreatedHeading.waitForDisplayed({ timeout: 10000 });
-    const text = await this.accountCreatedHeading.getText();
+    await this.accountCreatedTitle.waitForDisplayed({ timeout: 10000 });
+    const text = await this.accountCreatedTitle.getText();
     return text.toUpperCase().includes('ACCOUNT CREATED');
   }
 
