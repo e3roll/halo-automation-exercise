@@ -13,14 +13,6 @@ class SignupPage extends BasePage {
     return $('input#id_gender1');
   }
 
-  get nameInput() {
-    return $('input#name');
-  }
-
-  get emailInput() {
-    return $('input#email');
-  }
-
   get passwordInput() {
     return $('input#password');
   }

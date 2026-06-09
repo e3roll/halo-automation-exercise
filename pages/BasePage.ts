@@ -1,7 +1,5 @@
 import { DEFAULT_TIMEOUT } from '../constants';
 
-export { DEFAULT_TIMEOUT };
-
 export default class BasePage {
   get url(): string {
     return '/';
@@ -22,7 +20,5 @@ export default class BasePage {
     return $('a[data-qa="continue-button"]');
   }
 
-  async getTitle(): Promise<string> {
-    return browser.getTitle();
-  }
+
 }

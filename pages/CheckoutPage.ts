@@ -1,7 +1,6 @@
 import BasePage from './BasePage';
 
 class CheckoutPage extends BasePage {
-  // Delivery address block — confirms we're on the checkout page
   get addressDelivery() {
     return $('#address_delivery');
   }
@@ -10,7 +9,6 @@ class CheckoutPage extends BasePage {
     return $('textarea.form-control');
   }
 
-  // "Place Order" button links to /payment
   get placeOrderBtn() {
     return $('//a[normalize-space()="Place Order"]');
   }

@@ -1,16 +1,15 @@
-import BasePage, { DEFAULT_TIMEOUT } from './BasePage';
+import BasePage from './BasePage';
+import { DEFAULT_TIMEOUT } from '../constants';
 
 class CartPage extends BasePage {
   get url() {
     return '/view_cart';
   }
 
-  // "Proceed To Checkout" in cart
   get proceedToCheckoutBtn() {
     return $('a.btn.btn-default.check_out');
   }
 
-  // Modal that appears when not logged in — "Register / Login" link
   get registerLoginModalBtn() {
     return $('#checkoutModal a[href="/login"]');
   }
