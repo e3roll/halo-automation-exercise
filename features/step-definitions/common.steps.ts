@@ -1,13 +1,13 @@
-import { Given, When, Then } from '@wdio/cucumber-framework';
+import { Given, When, Then, DataTable } from '@wdio/cucumber-framework';
 import homePage from '../../pages/HomePage';
 import loginPage from '../../pages/LoginPage';
 import signupPage from '../../pages/SignupPage';
 import accountPage from '../../pages/AccountPage';
+import { DEFAULT_TIMEOUT } from '../../pages/BasePage';
 
 Given('I am on the home page', async () => {
   await homePage.open();
   await homePage.waitForPageLoad();
-  await homePage.logo.waitForDisplayed({ timeout: 10000 });
 });
 
 When('I click on Signup Login', async () => {
@@ -18,20 +18,26 @@ Then('I should see the {string} title', async (title: string) => {
   const upper = title.toUpperCase();
 
   if (upper.includes('NEW USER SIGNUP')) {
-    await loginPage.signupTitle.waitForDisplayed({ timeout: 10000 });
+    await loginPage.signupTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
   } else if (upper.includes('LOGIN TO YOUR ACCOUNT')) {
-    await loginPage.loginTitle.waitForDisplayed({ timeout: 10000 });
+    await loginPage.loginTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
   } else if (upper.includes('ENTER ACCOUNT INFORMATION')) {
-    await signupPage.accountInfoTitle.waitForDisplayed({ timeout: 10000 });
+    await signupPage.accountInfoTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
   } else if (upper.includes('ACCOUNT CREATED')) {
-    await signupPage.accountCreatedTitle.waitForDisplayed({ timeout: 10000 });
+    await signupPage.accountCreatedTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
   } else if (upper.includes('ACCOUNT DELETED')) {
-    await $('h2[data-qa="account-deleted"] b').waitForDisplayed({ timeout: 10000 });
+    await accountPage.accountDeletedTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+  } else {
+    throw new Error(`Unknown title: "${title}"`);
   }
 });
 
-Then('I should be logged in as {string}', async (_username: string) => {
-  await $('a[href="/logout"]').waitForDisplayed({ timeout: 10000 });
+Then('I should be logged in as {string}', async (username: string) => {
+  await accountPage.loggedInUsername.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+  const text = await accountPage.loggedInUsername.getText();
+  if (!text.includes(username)) {
+    throw new Error(`Expected user "${username}" but got: "${text}"`);
+  }
 });
 
 When(
@@ -48,18 +54,19 @@ When(
   }
 );
 
-When('I fill in address information', async () => {
+When('I fill in address information', async (table: DataTable) => {
+  const row = table.rowsHash();
   await signupPage.fillAddressInfo({
-    firstName: 'John',
-    lastName: 'Doe',
-    company: 'Test Corp',
-    address1: '123 Test Street',
-    address2: 'Suite 4',
-    country: 'United States',
-    state: 'California',
-    city: 'Los Angeles',
-    zipcode: '90001',
-    mobile: '5551234567',
+    firstName: row['firstName'],
+    lastName: row['lastName'],
+    company: row['company'],
+    address1: row['address1'],
+    address2: row['address2'],
+    country: row['country'],
+    state: row['state'],
+    city: row['city'],
+    zipcode: row['zipcode'],
+    mobile: row['mobile'],
   });
 });
 
@@ -76,7 +83,7 @@ When('I delete the account', async () => {
 });
 
 Then('I should see the error {string}', async (errorText: string) => {
-  await loginPage.signupErrorMessage.waitForDisplayed({ timeout: 10000 });
+  await loginPage.signupErrorMessage.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
   const error = await loginPage.signupErrorMessage.getText();
   if (!error.includes(errorText)) {
     throw new Error(`Expected signup error "${errorText}" but got: "${error}"`);

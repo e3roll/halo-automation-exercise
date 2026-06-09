@@ -58,24 +58,6 @@ class LoginPage extends BasePage {
     await this.signupEmailInput.setValue(email);
     await this.signupButton.click();
   }
-
-  async getLoginError(): Promise<string> {
-    await this.loginErrorMessage.waitForDisplayed();
-    return this.loginErrorMessage.getText();
-  }
-
-  async getSignupError(): Promise<string> {
-    await this.signupErrorMessage.waitForDisplayed();
-    return this.signupErrorMessage.getText();
-  }
-
-  async isLoginSectionVisible(): Promise<boolean> {
-    return this.loginTitle.isDisplayed();
-  }
-
-  async isSignupSectionVisible(): Promise<boolean> {
-    return this.signupTitle.isDisplayed();
-  }
 }
 
 export default new LoginPage();

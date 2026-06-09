@@ -59,7 +59,7 @@ WDIO_HEADLESS=true npx wdio run wdio.conf.ts --cucumberOpts.tags="@e2e"
 | TC05  | Register with an already-existing email           |
 | TC24  | Download invoice after completing a purchase      |
 
-> **Note:** TC02 and TC04 require a pre-existing account: `halo@testmail.com` / `Halo@1234`.
+> **Note:** TC02 and TC04 require a pre-existing account: `halo@testmail.com` / `test`.
 
 ## Author
 Eugenio

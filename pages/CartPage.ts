@@ -1,4 +1,4 @@
-import BasePage from './BasePage';
+import BasePage, { DEFAULT_TIMEOUT } from './BasePage';
 
 class CartPage extends BasePage {
   get url() {
@@ -15,21 +15,20 @@ class CartPage extends BasePage {
     return $('#checkoutModal a[href="/login"]');
   }
 
-  async isOnCartPage(): Promise<boolean> {
+  async waitForCartPage(): Promise<void> {
     await browser.waitUntil(
       async () => (await browser.getUrl()).includes('/view_cart'),
-      { timeout: 10000, timeoutMsg: 'Cart page did not load' }
+      { timeout: DEFAULT_TIMEOUT, timeoutMsg: 'Cart page did not load' }
     );
-    return true;
   }
 
   async proceedToCheckout(): Promise<void> {
-    await this.proceedToCheckoutBtn.waitForClickable({ timeout: 10000 });
+    await this.proceedToCheckoutBtn.waitForClickable({ timeout: DEFAULT_TIMEOUT });
     await this.proceedToCheckoutBtn.click();
   }
 
   async clickRegisterLoginOnModal(): Promise<void> {
-    await this.registerLoginModalBtn.waitForDisplayed({ timeout: 10000 });
+    await this.registerLoginModalBtn.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
     await this.registerLoginModalBtn.click();
   }
 }

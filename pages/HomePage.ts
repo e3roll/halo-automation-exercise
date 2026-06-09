@@ -1,4 +1,4 @@
-import BasePage from './BasePage';
+import BasePage, { DEFAULT_TIMEOUT } from './BasePage';
 
 class HomePage extends BasePage {
   get url() {
@@ -13,9 +13,9 @@ class HomePage extends BasePage {
     return $('img[src="/static/images/home/logo.png"]');
   }
 
-  async isDisplayed(): Promise<boolean> {
-    await this.logo.waitForDisplayed({ timeout: 10000 });
-    return this.logo.isDisplayed();
+  async waitForPageLoad(): Promise<void> {
+    await super.waitForPageLoad();
+    await this.logo.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
   }
 
   async clickSignupLogin(): Promise<void> {

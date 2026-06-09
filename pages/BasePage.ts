@@ -1,3 +1,7 @@
+import { DEFAULT_TIMEOUT } from '../constants';
+
+export { DEFAULT_TIMEOUT };
+
 export default class BasePage {
   get url(): string {
     return '/';
@@ -10,8 +14,12 @@ export default class BasePage {
   async waitForPageLoad(): Promise<void> {
     await browser.waitUntil(
       async () => (await browser.execute(() => document.readyState)) === 'complete',
-      { timeout: 10000, timeoutMsg: 'Page did not finish loading' }
+      { timeout: DEFAULT_TIMEOUT, timeoutMsg: 'Page did not finish loading' }
     );
+  }
+
+  get continueButton() {
+    return $('a[data-qa="continue-button"]');
   }
 
   async getTitle(): Promise<string> {

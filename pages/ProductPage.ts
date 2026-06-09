@@ -1,4 +1,4 @@
-import BasePage from './BasePage';
+import BasePage, { DEFAULT_TIMEOUT } from './BasePage';
 
 class ProductPage extends BasePage {
   get addToCartBtn() {
@@ -7,16 +7,15 @@ class ProductPage extends BasePage {
 
   get viewCartBtn() {
     return $('#cartModal a[href="/view_cart"]');
-    
   }
 
   async addToCart(): Promise<void> {
-    await this.addToCartBtn.waitForClickable({ timeout: 10000 });
+    await this.addToCartBtn.waitForClickable({ timeout: DEFAULT_TIMEOUT });
     await this.addToCartBtn.click();
   }
 
   async goToCartFromModal(): Promise<void> {
-    await this.viewCartBtn.waitForDisplayed({ timeout: 10000 });
+    await this.viewCartBtn.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
     await this.viewCartBtn.click();
   }
 }

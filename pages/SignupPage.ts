@@ -93,16 +93,6 @@ class SignupPage extends BasePage {
     return $('h2[data-qa="account-created"] b');
   }
 
-  get continueButton() {
-    return $('a[data-qa="continue-button"]');
-  }
-
-  async isAccountInfoPageDisplayed(): Promise<boolean> {
-    await this.accountInfoTitle.waitForDisplayed({ timeout: 10000 });
-    const text = await this.accountInfoTitle.getText();
-    return text.toUpperCase().includes('ENTER ACCOUNT INFORMATION');
-  }
-
   async fillAccountInfo(details: {
     password: string;
     day: string;
@@ -144,12 +134,6 @@ class SignupPage extends BasePage {
 
   async clickCreateAccount(): Promise<void> {
     await this.createAccountButton.click();
-  }
-
-  async isAccountCreated(): Promise<boolean> {
-    await this.accountCreatedTitle.waitForDisplayed({ timeout: 10000 });
-    const text = await this.accountCreatedTitle.getText();
-    return text.toUpperCase().includes('ACCOUNT CREATED');
   }
 
   async clickContinue(): Promise<void> {

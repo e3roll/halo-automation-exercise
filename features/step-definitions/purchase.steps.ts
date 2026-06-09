@@ -1,4 +1,4 @@
-import { When, Then } from '@wdio/cucumber-framework';
+import { When, Then, DataTable } from '@wdio/cucumber-framework';
 import productPage from '../../pages/ProductPage';
 import cartPage from '../../pages/CartPage';
 import checkoutPage from '../../pages/CheckoutPage';
@@ -14,7 +14,7 @@ When('I add the product to the cart', async () => {
 });
 
 Then('I should be on the cart page', async () => {
-  await cartPage.isOnCartPage();
+  await cartPage.waitForCartPage();
 });
 
 When('I proceed to checkout', async () => {
@@ -38,13 +38,14 @@ When('I place the order with comment {string}', async (comment: string) => {
   await checkoutPage.placeOrder();
 });
 
-When('I confirm payment with card details', async () => {
+When('I confirm payment with card details', async (table: DataTable) => {
+  const row = table.rowsHash();
   await paymentPage.fillAndSubmit({
-    name: 'Invoice Buyer',
-    cardNumber: '4111111111111111',
-    cvc: '123',
-    expiryMonth: '12',
-    expiryYear: '2027',
+    name: row['name'],
+    cardNumber: row['cardNumber'],
+    cvc: row['cvc'],
+    expiryMonth: row['expiryMonth'],
+    expiryYear: row['expiryYear'],
   });
 });
 

@@ -1,4 +1,4 @@
-import BasePage from './BasePage';
+import BasePage, { DEFAULT_TIMEOUT } from './BasePage';
 
 class CheckoutPage extends BasePage {
   // Delivery address block — confirms we're on the checkout page
@@ -16,16 +16,16 @@ class CheckoutPage extends BasePage {
   }
 
   async waitForAddressDetails(): Promise<void> {
-    await this.addressDelivery.waitForDisplayed({ timeout: 10000 });
+    await this.addressDelivery.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
   }
 
   async enterComment(comment: string): Promise<void> {
-    await this.commentTextarea.waitForDisplayed({ timeout: 10000 });
+    await this.commentTextarea.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
     await this.commentTextarea.setValue(comment);
   }
 
   async placeOrder(): Promise<void> {
-    await this.placeOrderBtn.waitForClickable({ timeout: 10000 });
+    await this.placeOrderBtn.waitForClickable({ timeout: DEFAULT_TIMEOUT });
     await this.placeOrderBtn.click();
   }
 }

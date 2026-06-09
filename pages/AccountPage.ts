@@ -9,38 +9,16 @@ class AccountPage extends BasePage {
     return $(`//a[contains(., 'Logged in as')]//b`);
   }
 
-  get continueButton() {
-    return $('a[data-qa="continue-button"]');
+  get accountDeletedTitle() {
+    return $('h2[data-qa="account-deleted"] b');
   }
 
   get logoutBtn() {
     return $('a[href="/logout"]');
   }
 
-  async isLoggedIn(username: string): Promise<boolean> {
-    // The nav renders "Logged in as <b>username</b>" inside an <a> tag when authenticated
-    const loggedInEl = await $(`//a[contains(., 'Logged in as')]`);
-    await loggedInEl.waitForDisplayed({ timeout: 10000 });
-    const text = await loggedInEl.getText();
-    return text.includes(`Logged in as ${username}`);
-  }
-
-  async getLoggedInUsername(): Promise<string> {
-    return this.loggedInUsername.getText();
-  }
-
   async deleteAccount(): Promise<void> {
     await this.deleteAccountBtn.click();
-  }
-
-  async isAccountDeleted(): Promise<boolean> {
-    const title = await $('h2[data-qa="account-deleted"] b');
-    await title.waitForDisplayed({ timeout: 10000 });
-    return (await title.getText()).toUpperCase().includes('ACCOUNT DELETED');
-  }
-
-  async clickContinueAfterDelete(): Promise<void> {
-    await this.continueButton.click();
   }
 
   async logout(): Promise<void> {

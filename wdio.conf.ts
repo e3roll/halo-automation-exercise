@@ -1,4 +1,5 @@
 import type { Options } from '@wdio/types';
+import { DEFAULT_TIMEOUT } from './constants';
 
 export const config: Options.Testrunner = {
   logLevels: {
@@ -15,8 +16,6 @@ export const config: Options.Testrunner = {
   },
 
   specs: ['./features/**/*.feature'],
-  exclude: [],
-
   maxInstances: 1,
 
   capabilities: [
@@ -55,7 +54,7 @@ export const config: Options.Testrunner = {
   logLevel: 'warn',
   bail: 0,
   baseUrl: 'https://www.automationexercise.com',
-  waitforTimeout: 10000,
+  waitforTimeout: DEFAULT_TIMEOUT,
   connectionRetryTimeout: 120000,
   connectionRetryCount: 3,
 
@@ -70,25 +69,9 @@ export const config: Options.Testrunner = {
     source: true,
     strict: false,
     tags: '',
-    timeout: 60000,
+    timeout: 60000, // Cucumber step timeout
     ignoreUndefinedDefinitions: false,
   },
 
-  reporters: [
-    'spec',
-    [
-      'allure',
-      {
-        outputDir: 'allure-results',
-        disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: false,
-      },
-    ],
-  ],
-
-  afterStep: async function (_step, _scenario, { error }) {
-    if (error) {
-      await browser.takeScreenshot();
-    }
-  },
+  reporters: ['spec'],
 };
