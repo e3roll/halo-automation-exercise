@@ -1,4 +1,4 @@
-import BasePage, { DEFAULT_TIMEOUT } from './BasePage';
+import BasePage from './BasePage';
 
 class PaymentPage extends BasePage {
   get nameOnCardInput() {
@@ -41,7 +41,7 @@ class PaymentPage extends BasePage {
     expiryMonth: string;
     expiryYear: string;
   }): Promise<void> {
-    await this.nameOnCardInput.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await this.nameOnCardInput.waitForDisplayed();
     await this.nameOnCardInput.setValue(details.name);
     await this.cardNumberInput.setValue(details.cardNumber);
     await this.cvcInput.setValue(details.cvc);
@@ -55,7 +55,7 @@ class PaymentPage extends BasePage {
   }
 
   async downloadInvoice(): Promise<void> {
-    await this.downloadInvoiceBtn.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await this.downloadInvoiceBtn.waitForDisplayed();
     await this.downloadInvoiceBtn.click();
   }
 }

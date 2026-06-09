@@ -23,12 +23,12 @@ class CartPage extends BasePage {
   }
 
   async proceedToCheckout(): Promise<void> {
-    await this.proceedToCheckoutBtn.waitForClickable({ timeout: DEFAULT_TIMEOUT });
+    await this.proceedToCheckoutBtn.waitForClickable();
     await this.proceedToCheckoutBtn.click();
   }
 
   async clickRegisterLoginOnModal(): Promise<void> {
-    await this.registerLoginModalBtn.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await this.registerLoginModalBtn.waitForDisplayed();
     await this.registerLoginModalBtn.click();
   }
 }

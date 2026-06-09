@@ -3,7 +3,6 @@ import homePage from '../../pages/HomePage';
 import loginPage from '../../pages/LoginPage';
 import signupPage from '../../pages/SignupPage';
 import accountPage from '../../pages/AccountPage';
-import { DEFAULT_TIMEOUT } from '../../pages/BasePage';
 
 Given('I am on the home page', async () => {
   await homePage.open();
@@ -18,22 +17,22 @@ Then('I should see the {string} title', async (title: string) => {
   const upper = title.toUpperCase();
 
   if (upper.includes('NEW USER SIGNUP')) {
-    await loginPage.signupTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await loginPage.signupTitle.waitForDisplayed();
   } else if (upper.includes('LOGIN TO YOUR ACCOUNT')) {
-    await loginPage.loginTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await loginPage.loginTitle.waitForDisplayed();
   } else if (upper.includes('ENTER ACCOUNT INFORMATION')) {
-    await signupPage.accountInfoTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await signupPage.accountInfoTitle.waitForDisplayed();
   } else if (upper.includes('ACCOUNT CREATED')) {
-    await signupPage.accountCreatedTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await signupPage.accountCreatedTitle.waitForDisplayed();
   } else if (upper.includes('ACCOUNT DELETED')) {
-    await accountPage.accountDeletedTitle.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await accountPage.accountDeletedTitle.waitForDisplayed();
   } else {
     throw new Error(`Unknown title: "${title}"`);
   }
 });
 
 Then('I should be logged in as {string}', async (username: string) => {
-  await accountPage.loggedInUsername.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+  await accountPage.loggedInUsername.waitForDisplayed();
   const text = await accountPage.loggedInUsername.getText();
   if (!text.includes(username)) {
     throw new Error(`Expected user "${username}" but got: "${text}"`);
@@ -83,7 +82,7 @@ When('I delete the account', async () => {
 });
 
 Then('I should see the error {string}', async (errorText: string) => {
-  await loginPage.signupErrorMessage.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+  await loginPage.signupErrorMessage.waitForDisplayed();
   const error = await loginPage.signupErrorMessage.getText();
   if (!error.includes(errorText)) {
     throw new Error(`Expected signup error "${errorText}" but got: "${error}"`);

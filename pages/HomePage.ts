@@ -1,4 +1,4 @@
-import BasePage, { DEFAULT_TIMEOUT } from './BasePage';
+import BasePage from './BasePage';
 
 class HomePage extends BasePage {
   get url() {
@@ -15,7 +15,7 @@ class HomePage extends BasePage {
 
   async waitForPageLoad(): Promise<void> {
     await super.waitForPageLoad();
-    await this.logo.waitForDisplayed({ timeout: DEFAULT_TIMEOUT });
+    await this.logo.waitForDisplayed();
   }
 
   async clickSignupLogin(): Promise<void> {
