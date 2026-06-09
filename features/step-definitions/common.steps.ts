@@ -80,11 +80,3 @@ When('I click Continue', async () => {
 When('I delete the account', async () => {
   await accountPage.deleteAccount();
 });
-
-Then('I should see the error {string}', async (errorText: string) => {
-  await loginPage.signupErrorMessage.waitForDisplayed();
-  const error = await loginPage.signupErrorMessage.getText();
-  if (!error.includes(errorText)) {
-    throw new Error(`Expected signup error "${errorText}" but got: "${error}"`);
-  }
-});

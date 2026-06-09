@@ -19,6 +19,7 @@ class HomePage extends BasePage {
   }
 
   async clickSignupLogin(): Promise<void> {
+    await this.signupLoginBtn.waitForDisplayed();
     await this.signupLoginBtn.click();
   }
 }

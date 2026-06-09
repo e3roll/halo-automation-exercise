@@ -18,10 +18,12 @@ class AccountPage extends BasePage {
   }
 
   async deleteAccount(): Promise<void> {
+    await this.deleteAccountBtn.waitForDisplayed();
     await this.deleteAccountBtn.click();
   }
 
   async logout(): Promise<void> {
+    await this.logoutBtn.waitForDisplayed();
     await this.logoutBtn.click();
   }
 }

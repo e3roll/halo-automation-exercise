@@ -1,6 +1,7 @@
 import { When, Then } from '@wdio/cucumber-framework';
 import loginPage from '../../pages/LoginPage';
 import accountPage from '../../pages/AccountPage';
+
 When('I click Logout', async () => {
   await accountPage.logout();
 });

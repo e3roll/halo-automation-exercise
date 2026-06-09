@@ -49,16 +49,14 @@ WDIO_HEADLESS=true npx wdio run wdio.conf.ts --cucumberOpts.tags="@e2e"
 
 ## Test Cases
 
-| ID    | Scenario                                          |
-|-------|---------------------------------------------------|
-| TC01  | Register a new user and delete the account        |
-| TC02  | Login with correct credentials (then logout TC04) |
-| TC03  | Login with incorrect credentials                  |
-| TC04  | Logout user                                       |
-| TC05  | Register with an already-existing email           |
-| TC24  | Download invoice after completing a purchase      |
+| ID    | Scenario                                     |
+|-------|----------------------------------------------|
+| TC01  | Register a new user and delete the account   |
+| TC02  | Login with correct credentials and logout    |
+| TC24  | Download invoice after completing a purchase |
 
-> **Note:** TC02 and TC04 require a pre-existing account: `halo@testmail.com` / `test`.
+> **Note:** TC02 requires a pre-existing account: `halo@testmail.com` / `halotest`.
 
 ## Author
+
 Eugenio

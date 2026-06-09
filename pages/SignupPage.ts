@@ -91,6 +91,7 @@ class SignupPage extends BasePage {
     month: string;
     year: string;
   }): Promise<void> {
+    await this.titleMrRadio.waitForDisplayed();
     await this.titleMrRadio.click();
     await this.passwordInput.setValue(details.password);
     await this.daySelect.selectByVisibleText(details.day);
@@ -125,10 +126,12 @@ class SignupPage extends BasePage {
   }
 
   async clickCreateAccount(): Promise<void> {
+    await this.createAccountButton.waitForDisplayed();
     await this.createAccountButton.click();
   }
 
   async clickContinue(): Promise<void> {
+    await this.continueButton.waitForDisplayed();
     await this.continueButton.click();
   }
 }

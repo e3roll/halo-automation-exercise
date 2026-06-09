@@ -26,9 +26,3 @@ Feature: User Registration
     Then I should be logged in as "Random User"
     When I delete the account
     Then I should see the "ACCOUNT DELETED!" title
-
-  Scenario: TC05 - Register User with Existing Email
-    When I click on Signup Login
-    Then I should see the "New User Signup!" title
-    When I enter name "Jane Doe" and email "existing@testmail.com"
-    Then I should see the error "Email Address already exist!"

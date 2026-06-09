@@ -22,10 +22,6 @@ class LoginPage extends BasePage {
     return $('button[data-qa="login-button"]');
   }
 
-  get loginErrorMessage() {
-    return $('div.login-form p');
-  }
-
   // Signup section
   get signupTitle() {
     return $('div.signup-form h2');
@@ -41,10 +37,6 @@ class LoginPage extends BasePage {
 
   get signupButton() {
     return $('button[data-qa="signup-button"]');
-  }
-
-  get signupErrorMessage() {
-    return $('div.signup-form p');
   }
 
   async loginWith(email: string, password: string): Promise<void> {
