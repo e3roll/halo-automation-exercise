@@ -6,7 +6,6 @@ Test cases built with WebDriverIO v9, Cucumber (BDD), and TypeScript for site [a
 
 - BDD-style scenarios written in Gherkin (`.feature` files)
 - POM design pattern
-- Allure reporter
 - Headless execution
 
 ## Requirements
